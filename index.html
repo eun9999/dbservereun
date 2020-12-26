@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>고객 거래 상품 관리</title>
+		<style>
+			.box1{
+				width:800px;
+				height:20px;
+				padding:10px;
+				margin:10px;
+				color:black;
+				text-align:center;
+			}
+
+			input[type=text],input[type=date]{
+				width:20%;
+				height:20px;
+				padding:10px;
+				box-sizing:border-box;
+			}
+			
+			#sel_gender{
+				width:10%;
+				height:20px;
+			}
+		
+			textarea{
+				width:100%;
+				height:80px;
+			}
+			input[type=text_B]{
+				width:80px;
+				height:20px;
+			}
+			#m, #k{
+				width:40px;
+				height:20px;
+			}
+		</style>
+		<script>
+
+		</script>
+	</head>
+	<body>
+			<div class="box1">
+				<h2>DB Assignment 2</h2>
+			</div>
+			<h2>정보 입력</h2>
+			<form name="csv" method="post" enctype="multipart/form-data" action="csv.php" >
+				<input type="file" name="csvfile">
+				<input type="submit" value="Upload">
+			</form>
+			<div class="box2">
+				<form name="myform" method="post" action="http://127.0.0.1/addCustomer.php">
+				<p>
+					<label for="txt_customer">고객</label></br>
+					<input type="text" name="txt_name" id="txt_name" placeholder="name">
+					<input type="text" name="txt_phone" id="txt_phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="000-000-0000">
+					<input type="text" name="txt_addr" id="txt_addr" placeholder="address">
+					<select name="sel_gender" id="sel_gender">
+						<option value="Male" selected>Male</option>
+						<option value="Female">Female</option>
+					</select>
+					<input type="submit" value="addCustomer">
+				</p>
+				</form>
+			</div>
+				
+			<div class="box3">
+				<form name="myform2" method="post" action="http://127.0.0.1/addTransaction.php">
+				<p>
+					<label for="txt_transaction">거래</label></br>
+					<input type="text" name="txt_transactionNum" id="txt_transactionNum" placeholder="transNum">
+					<input type="text" name="txt_transproductID" id="txt_transproductID" placeholder="productID">
+					<input type="text" name="txt_price" id="txt_price" placeholder="price">
+					<input type="date" name="txt_date" id="txt_date" placeholder="date">
+					<input type="text" name="txt_customerName" id="txt`_customerName" placeholder="customerName">
+					<input type="submit" value="addTransaction" >
+					
+				</p>
+				</form>
+			</div>
+			
+			<div class="box2">	
+				<form name="myform3" method="post" action="http://127.0.0.1/addProduct.php">
+				<p>
+					<label for="txt_product">상품</label></br>
+					<input type="text" name="txt_productName" id="txt_productName" placeholder="name">
+					<input type="text" name="txt_productID" id="txt_productID" placeholder="productID">
+					<input type="text" name="txt_supplier" id="txt_supplier" placeholder="supplierName">
+					<input type="submit" value="addProduct" >
+				</p>
+				</form>
+			</div>
+			<br>
+			<h2>검색</h2>
+			
+			<div id="searchCus">
+				<form name="searchCustomer" method="post" action="http://127.0.0.1/searchC.php">
+				<select id="searchCType" name="selC">
+					<option value="name">Name</option>
+					<option value="phone">Phone</option>
+					<option value="address">Address</option>
+					<option value="gender">Gender</option>
+				</select>
+				<input type="search" id="searchC" name="searchC">
+				<input type="submit" value="SearchCustomer">
+				</form>
+			</div>
+			
+			<div id="searchTrans" >
+			<form name="searchTransaction" method="post" action="http://127.0.0.1/searchT.php">
+				<select id="searchTType" name="selT">
+					<option value="transactionNum">Transaction Num</option>
+					<option value="transproductID">Product ID</option>
+					<option value="price">Price</option>
+					<option value="transDate">Date</option>
+					<option value="customerName">Customer Name</option>
+				</select>
+				<input type="search" id="searchT" name="searchT">
+				<input type="submit"  value="SearchTransaction">
+			</form>
+			</div>
+			
+			<div id="searchProd" >
+			<form name="searchProduct" method="post" action="http://127.0.0.1/searchP.php">
+				<select id="searchPType" name="selP">
+					<option value="productName">Product Name</option>
+					<option value="productID">Product ID</option>
+					<option value="supplierName">Supplier Name</option>
+				</select>
+				<input type="search" id="searchP" name="searchP">
+				<input type="submit" value="SearchProduct">
+			</form>
+			</div>
+			
+			<br>
+			<h2>조건 검색</h2>
+			<p>
+				<div id="a">
+				<form name="A" method="post" action="http://127.0.0.1/A.php">
+					남자보다 여자가 많이 산 상품의 이름
+					<input type="submit" value="검색"></br>
+				</form>
+				</div>
+				<div id="b">
+				<form name="B" method="post" action="http://127.0.0.1/B.php">
+					<input type="date" name="date" id="date" placeholder="date">이전에 가장 많은 거래가 이루어진<input type="text" name="k" id="k" placeholder="n">가지 상품
+					<input type="submit" value="검색"></br>
+				</form>
+				</div>
+				<div id="c">
+				<form name="C" method="post" action="http://127.0.0.1/C.php">
+					하나의 supplier에서 <input type="text_C" name="m" id="m" placeholder="m">번 이상의 제품을 산 고객의 이름
+					<input type="submit" value="검색"></br>
+				</form>
+				</div>
+				
+				
+				
+			</p>
+
+	</body>
+</html>
